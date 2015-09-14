@@ -25,4 +25,17 @@
 	<bean id="clientService" factory-bean="serviceLocator" factory-method="createClientServiceInstance">
 	</bean>
 	
+	<!-- Dependency Injection Starts Here(Constructer(Index,name,type) and setter injection param Name) -->
+	<bean id="beanArgsId" class="com.springdev.cfc.GenericBean">
+		<constructor-arg index="0" value="imKey"/>
+		<constructor-arg index="1" value="imValue"/> 
+	</bean>
+	<bean id="beanArgsName" class="com.springdev.cfc.GenericBean">
+		<constructor-arg  value="imKey"/>
+		<constructor-arg value="imValue"/> 
+	</bean>
+	<bean id="beanArgsType" class="com.springdev.cfc.GenericBean">
+		<constructor-arg type="java.lang.String" value="imKey"/>
+		<constructor-arg type="java.lang.String" value="imValue"/> 
+	</bean>
 </beans>

@@ -2,7 +2,18 @@ package com.springdev.cfc;
 
 public class GenericBean {
 	private String propertyName;
+	private String propertyValue;
+
 	private NestedBean nestedRef;
+
+	public GenericBean() {
+
+	}
+
+	public GenericBean(String setPropertyName, String setPropertyVal) {
+		propertyName = setPropertyName;
+		propertyValue = setPropertyVal;
+	}
 
 	public String getPropertyName() {
 		return propertyName;
@@ -10,6 +21,14 @@ public class GenericBean {
 
 	public void setPropertyName(String propertyName) {
 		this.propertyName = propertyName;
+	}
+
+	public String getPropertyValue() {
+		return propertyValue;
+	}
+
+	public void setPropertyValue(String propertyValue) {
+		this.propertyValue = propertyValue;
 	}
 
 	public NestedBean getNestedRef() {

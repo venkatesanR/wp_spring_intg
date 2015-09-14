@@ -2,7 +2,7 @@ package com.springdev.cfc;
 
 public class DependentBean {
 	private String dependentProperty;
-
+	
 	public String getDependentProperty() {
 		return dependentProperty;
 	}
