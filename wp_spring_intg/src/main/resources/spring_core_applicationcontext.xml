@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- Bean Definations -->
+	<bean id="genericBean" class="com.springdev.cfc.GenericBean">
+		<property name="propertyName" value="google" />
+	</bean>
+	
+	<!--alias bean defination -->
+	<alias name="genericBean" alias="aliasName"></alias>
+
+	<!-- Nested bean injection-->
+	<bean id="genericOuterBean" class="com.springdev.cfc.GenericBean">
+		<property name="propertyName" value="Doodlers" />
+		<property name="nestedRef" ref="nestedBean" />
+	</bean>
+	<bean id="nestedBean" class="com.springdev.cfc.GenericBean$NestedBean">
+	</bean>
+	
+	<!--Bean Creator via Factory Bean And Factory Method -->
+	<bean id="serviceLocator" class="com.springdev.cfc.GenericBeanFactory" >
+	</bean>
+	<bean id="clientService" factory-bean="serviceLocator" factory-method="createClientServiceInstance">
+	</bean>
+	
+</beans>
