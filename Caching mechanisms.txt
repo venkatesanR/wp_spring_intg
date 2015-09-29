@@ -42,3 +42,48 @@ MemCache(Open Source)
 
 
 
+Spring caching mechanisms:
+-------------------------
+https://youtu.be/3NLS7147UQo
+Git Hub:https://github.com/mploed
+(1)Where/Which Layer i have to do caching
+--------------------------------------
+
+Complaint Management Rest Controller-HTTP caching
+Complaint Management Buisness Service-Read Operations
+Data Aggerigate Manager-Read Operations
+HostCommands-Read Operations
+SAP commands-Read Operations
+Spring Data Repo-R/W caching
+
+(2)Stay local as long as possible
+	data consitancy
+
+(3)Avoid real replication where possible
+    Invalidation-update and invalidatin
+    Real Replication
+    
+(4)Avoid increasing heap just for Caching
+    HeapSize <===> Garbage Collections
+    
+(5)Use distributed cache mechanism for Big dats's
+
+(6)N/W specs
+
+(7)Which data gets cached
+   M_read,Less wright
+   
+(8)Only use existing cache implementations
+
+(9)How do you introduce caching(Three steps)
+
+ (optimeze ur app)>  (Local cache)> (Distributed cache)
+ 
+(10)Optimize serialization
+
+(11)Use Off Heap if Size is(Cache) > 4GB
+
+12.security gap
+
+13.Abstract your cahe provider
+

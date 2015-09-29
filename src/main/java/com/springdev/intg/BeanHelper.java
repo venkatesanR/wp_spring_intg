@@ -12,7 +12,7 @@ public class BeanHelper<T> extends ApplicationContextLoader {
 		getBeanMap();
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "hiding" })
 	public <T> T getBean(String beanKey) {
 		return (T) appContextRef.getBean(beanKey);
 	}
