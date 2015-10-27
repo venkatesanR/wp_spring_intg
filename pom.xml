@@ -21,6 +21,7 @@
 		<geronimo-j2ee_1.4_spec-release-version>1.0</geronimo-j2ee_1.4_spec-release-version>
 		<maven.compiler.target>1.6</maven.compiler.target>
 		<maven.compiler.source>1.6</maven.compiler.source>
+		<mysql-driver-vers>5.1.6</mysql-driver-vers>
 	</properties>
 	<dependencies>
 		<!-- logger dependency -->
@@ -97,12 +98,10 @@
 		</dependency>
 		<!-- DATABASE DEPENDENCY -->
 		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>11.2.0.4</version>
-			<scope>provided</scope>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-driver-vers}</version>
 		</dependency>
-
 		<!-- JUNIT DEPENDENCY -->
 		<dependency>
 			<groupId>junit</groupId>
