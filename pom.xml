@@ -22,6 +22,7 @@
 		<maven.compiler.target>1.6</maven.compiler.target>
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<mysql-driver-vers>5.1.6</mysql-driver-vers>
+		<beanutil-vers>1.9.2</beanutil-vers>
 	</properties>
 	<dependencies>
 		<!-- logger dependency -->
@@ -96,6 +97,13 @@
 			<version>${geronimo-j2ee_1.4_spec-release-version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<!--3RD party -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${beanutil-vers}</version>
+		</dependency>
+
 		<!-- DATABASE DEPENDENCY -->
 		<dependency>
 			<groupId>mysql</groupId>

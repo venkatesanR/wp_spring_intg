@@ -7,19 +7,20 @@ import java.sql.SQLException;
 import org.apache.log4j.Logger;
 
 public class DBConnectionUtility {
-	private static final transient Logger logger=Logger.getLogger(DBConnectionUtility.class);
-	private static Connection connection = null;
-	private static DataBaseInfo dbInfo;
+	private static final transient Logger logger = Logger
+			.getLogger(DBConnectionUtility.class);
+	private DataBaseInfo dbInfo;
 
-	public static DataBaseInfo getDbInfo() {
+	public DataBaseInfo getDbInfo() {
 		return dbInfo;
 	}
 
 	public void setDbInfo(DataBaseInfo dbInfo) {
-		DBConnectionUtility.dbInfo = dbInfo;
+		this.dbInfo = dbInfo;
 	}
 
-	public static void createDBConnection() {
+	public Connection createDBConnection() {
+		Connection connection = null;
 		try {
 			Class.forName(getDbInfo().getDbClassName());
 			connection = DriverManager.getConnection(getDbInfo()
@@ -30,22 +31,23 @@ public class DBConnectionUtility {
 		} catch (SQLException e) {
 			logger.error("Error while creating connection", e);
 		}
+		return connection;
 	}
 
-	public static void commitConnection() {
-		if (connection != null) {
+	public void commitConnection(Connection conn) {
+		if (conn != null) {
 			try {
-				connection.commit();
+				conn.commit();
 			} catch (SQLException e) {
 				logger.error("Error while commitConnection", e);
 			}
 		}
 	}
 
-	public static void closeConnection() {
-		if (connection != null) {
+	public void closeConnection(Connection conn) {
+		if (conn != null) {
 			try {
-				connection.close();
+				conn.close();
 			} catch (SQLException e) {
 				logger.error("Error while closeConnection", e);
 			}
