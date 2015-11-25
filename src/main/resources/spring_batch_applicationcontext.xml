@@ -1,0 +1,41 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+	
+	<bean id="jobRepository" class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="databaseType" value="mysql" />
+	</bean>
+
+	<bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+		<property name="jobRepository" ref="jobRepository" />
+	</bean>
+
+	<batch:job id="dealStatusChangeJob">
+		<batch:step id="step1">
+			<batch:tasklet transaction-manager="transactionManager"
+				allow-start-if-complete="true">
+				<batch:chunk reader="reader" writer="writter"
+					processor="processor" commit-interval="1" />
+			</batch:tasklet>
+		</batch:step>
+	</batch:job>
+	<bean id="reader" class="com.springdev.batch.item.BatchReader"
+		scope="step">
+	</bean>
+	<bean id="writter" class="com.springdev.batch.item.BatchWriter">
+	</bean>
+	<bean id="processor" class="com.springdev.batch.item.BatchProcessor" />
+	<bean id="scheduler" class="com.springdev.batch.scheduler.NativeTaskScheduler">
+		<constructor-arg ref="jobLauncher" />
+		<constructor-arg ref="dealStatusChangeJob" />
+	</bean>
+
+ 	<task:scheduled-tasks>
+		<task:scheduled ref="scheduler"
+			method="run" cron="*/5 * * * * *" />
+	</task:scheduled-tasks>
+</beans>

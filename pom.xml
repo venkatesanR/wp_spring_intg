@@ -1,0 +1,118 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.spring.intg</groupId>
+	<artifactId>wp_spring_intg</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>wp_spring_intg</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>4.0.6.RELEASE</spring.version>
+		<hibernate.version>4.3.6.Final</hibernate.version>
+		<logger.version>1.2.17</logger.version>
+		<ehCache.version>2.9.0</ehCache.version>
+		<springbatch.version>3.0.1.RELEASE</springbatch.version>
+		<geronimo-j2ee_1.4_spec-release-version>1.0</geronimo-j2ee_1.4_spec-release-version>
+		<mysql-driver-vers>5.1.6</mysql-driver-vers>
+		<javassist.version>3.18.1-GA</javassist.version>
+		<joda-time.version>2.3</joda-time.version>
+		<c3p0.version>0.9.5-pre8</c3p0.version>
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.source>1.6</maven.compiler.source>
+	</properties>
+	<dependencies>
+		<!-- logger dependency -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${logger.version}</version>
+		</dependency>
+		<!-- echCache dependency -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>${ehCache.version}</version>
+		</dependency>
+		<!-- SPRING DEPENDENCY -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- SPRING BATCH DEPENDENCY -->
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-core</artifactId>
+			<version>${springbatch.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-infrastructure</artifactId>
+			<version>${springbatch.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-j2ee_1.4_spec</artifactId>
+			<version>${geronimo-j2ee_1.4_spec-release-version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!--3RD party -->
+		<dependency>
+			<groupId>com.google.code.simple-spring-memcached</groupId>
+			<artifactId>spymemcached</artifactId>
+			<version>2.8.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>11.0.2</version>
+		</dependency>
+		        <!-- Hibernate related dependencies -->
+		        <dependency>
+		            <groupId>org.hibernate</groupId>
+		            <artifactId>hibernate-core</artifactId>
+		            <version>${hibernate.version}</version>
+		        </dependency>
+		        <dependency>
+		            <groupId>org.javassist</groupId>
+		            <artifactId>javassist</artifactId>
+		            <version>${javassist.version}</version>
+        </dependency>
+		<!-- DATABASE DEPENDENCY -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-driver-vers}</version>
+		</dependency>
+		<!-- JUNIT DEPENDENCY -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

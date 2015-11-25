@@ -1,0 +1,43 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- Bean Definations -->
+	<bean id="genericBean" class="com.springdev.cfc.GenericBean" scope="prototype">
+		<property name="propertyName" value="google" />
+	</bean>
+
+	<!--alias bean defination -->
+	<alias name="genericBean" alias="aliasName"></alias>
+
+	<!-- Nested bean injection -->
+	<bean id="genericOuterBean" class="com.springdev.cfc.GenericBean">
+		<property name="propertyName" value="Doodlers" />
+		<property name="nestedRef" ref="nestedBean" />
+	</bean>
+	<bean id="nestedBean" class="com.springdev.cfc.GenericBean$NestedBean">
+	</bean>
+
+	<!--Bean Creator via Factory Bean And Factory Method -->
+	<bean id="serviceLocator" class="com.springdev.cfc.GenericBeanFactory">
+	</bean>
+	<bean id="clientService" factory-bean="serviceLocator"
+		factory-method="createClientServiceInstance">
+	</bean>
+
+	<!-- Dependency Injection Starts Here(Constructer(Index,name,type) and setter 
+		injection param Name) -->
+	<bean id="beanArgsId" class="com.springdev.cfc.GenericBean">
+		<constructor-arg index="0" value="imKey" />
+		<constructor-arg index="1" value="imValue" />
+	</bean>
+	<bean id="beanArgsName" class="com.springdev.cfc.GenericBean">
+		<constructor-arg value="imKey" />
+		<constructor-arg value="imValue" />
+	</bean>
+	<bean id="beanArgsType" class="com.springdev.cfc.GenericBean">
+		<constructor-arg type="java.lang.String" value="imKey" />
+		<constructor-arg type="java.lang.String" value="imValue" />
+	</bean>
+</beans>

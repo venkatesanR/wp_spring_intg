@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- Test Class beaninject -->
+	<bean id="testBean" class="com.springdev.intg.SpringTestBeanImpl">
+		<property name="cacheUtils" ref="cacheImpl" />
+	</bean>
+	<!-- metadata imports to access all recipe of spring -->
+	<import resource="spring_core_applicationcontext.xml"/>
+	<import resource="spring_aop_applicationcontext.xml"/>
+	<import resource="spring_instrumentaion_applicationcontext.xml"/>
+	<import resource="spring_resource_applicationcontext.xml"/>
+    <import resource="spring_orxm_applicationcontext.xml"/>
+	<import resource="spring_jdbc_applicationcontext.xml"/>
+	<import resource="spring_jms_applicationcontext.xml"/>
+	<import resource="spring_rest_applicationcontext.xml"/>
+	<import resource="spring_socket_applicationcontext.xml"/>
+	<import resource="spring_quartz_applicationcontext.xml"/>
+	<import resource="spring_batch_applicationcontext.xml"/>
+	<import resource="spring_cache_applicationcontext.xml"/>
+</beans>
