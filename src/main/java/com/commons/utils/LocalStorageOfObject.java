@@ -13,7 +13,8 @@ import java.util.Map;
 import com.springdev.intg.BeanHelper;
 
 public class LocalStorageOfObject extends BeanHelper<Object> {
-	private static final transient String LOCAL_STORAGE = "/home/yumecorp/Desktop/YuMe-WorkPlace/wp_spring_intg/LOCAL_STORAGE/app_data_store.ser";
+	private static final transient String LOCAL_STORAGE = "/home/yumecorp/Desktop/YuMe-WorkPlace/wp_spring_intg/LOCAL_STORAGE/app_session_data.ser";
+	//private static final transient String SESSS_LOCAL_STORAGE = "/home/yumecorp/Desktop/YuMe-WorkPlace/wp_spring_intg/LOCAL_STORAGE/app_data_store.ser";
 
 	public static void storeObjectInLocal(Object object, String cacheKey) {
 		if (object == null) {

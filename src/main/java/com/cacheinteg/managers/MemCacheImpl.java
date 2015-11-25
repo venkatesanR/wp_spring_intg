@@ -7,11 +7,8 @@ import org.apache.log4j.Logger;
 
 import com.springdev.intg.SpringTestBeanImpl;
 
-import net.spy.memcached.util.CacheLoader;
-
 public class MemCacheImpl implements CacheInterFace {
 	private static final transient Logger logger = Logger.getLogger(SpringTestBeanImpl.class);
-	private CacheLoader cac;
 	@Override
 	public Object get(String cacheName, Object key) {
 		return null;

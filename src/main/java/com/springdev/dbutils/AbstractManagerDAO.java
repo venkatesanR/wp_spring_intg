@@ -47,8 +47,8 @@ public class AbstractManagerDAO implements DAOInterFace{
 			if (resulsts != null) {
 				result = new ArrayList<T>();
 				while (resulsts.next()) {
-					T dbRef=
-					result.add(e);
+					T dbRef=null;
+					result.add(dbRef);
                 }
 			}
 

@@ -17,21 +17,23 @@ public class MemCacheClientTest extends LocalStorageOfObject {
 	private static final String datRangId = "20151025_20151124";
 
 	public static void main(String[] args) {
-		MemcachedClient local = null;
+/*		MemcachedClient local = null;
 		MemcachedClient remote = null;
 		try {
 			local = new MemcachedClient(new InetSocketAddress(inetAdrs, 11211));
 			remote = new MemcachedClient(new InetSocketAddress(inetAdrs2, 11211));
-			prepareAndLoadDataFromRemote(remote, local);
+			//prepareAndLoadDataFromRemote(remote, local);
 			// printAllBeans();
-			printLocalCachedData(local);
+			storeObjectInLocal(new Boolean(false), "dealStatusChangeJob");
+			//printLocalCachedData(local);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			local.shutdown();
 			remote.shutdown();
-		}
-
+		}*/
+		storeObjectInLocal(new Boolean(false), "dealStatusChangeJob");
+		printAllBeans();
 	}
 
 	public static String prepareLocalKey(String prefix, String zeroPadding) {
