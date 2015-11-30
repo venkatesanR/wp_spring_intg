@@ -10,5 +10,13 @@ public class TestUtils extends BeanHelper<Object> {
 		beanInfo.setPropertyValue("Must");
 		LocalStorageOfObject.storeObjectInLocal(beanInfo, "GENERIC_INFO");
 		LocalStorageOfObject.printAllBeans();
+		A ref=new A();
+	}
+	static class A {
+		private static Integer testInfo=0;
+		
+		private void setTestInfo(Integer test) {
+			this.testInfo=test;
+		}
 	}
 }

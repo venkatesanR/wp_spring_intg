@@ -3,8 +3,9 @@ package com.springdev.intg;
 import org.apache.log4j.Logger;
 
 import com.cacheinteg.managers.CacheAccessUtils;
+import com.commons.utils.ObjectUtils;
 
-public class SpringTestBeanImpl implements SpringTestBean {
+public class SpringTestBeanImpl extends ObjectUtils implements SpringTestBean {
 	private static final transient Logger logger = Logger
 			.getLogger(SpringTestBeanImpl.class);
 	private CacheAccessUtils cacheUtils;
@@ -21,8 +22,6 @@ public class SpringTestBeanImpl implements SpringTestBean {
 	public void testCacheImpl() {
 		logger.info("test Cache started");
 		// #1-Eh Cache Test
-		cacheUtils.testPut("firstEhCacheWSK", "Key1", "val1");
-		logger.info("Cached Value::" + cacheUtils.testGet("firstEhCacheWSK", "Key1"));
 		logger.info("test Cache finished");
 	}
 
@@ -52,8 +51,7 @@ public class SpringTestBeanImpl implements SpringTestBean {
 				.getBeanDefinitionNames();
 		if (beanDefinations != null && beanDefinations.length > 0) {
 			for (String beanType : beanDefinations) {
-				logger.info(BeanHelper.printBeanProperites(helper
-						.getBean(beanType)));
+				logger.info(printBeanProperites(helper.getBean(beanType)));
 			}
 		}
 	}

@@ -9,18 +9,13 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.version>4.0.6.RELEASE</spring.version>
-		<hibernate.version>4.3.6.Final</hibernate.version>
+		<spring.version>4.0.9.RELEASE</spring.version>
 		<logger.version>1.2.17</logger.version>
 		<ehCache.version>2.9.0</ehCache.version>
 		<springbatch.version>3.0.1.RELEASE</springbatch.version>
-		<geronimo-j2ee_1.4_spec-release-version>1.0</geronimo-j2ee_1.4_spec-release-version>
 		<mysql-driver-vers>5.1.6</mysql-driver-vers>
-		<javassist.version>3.18.1-GA</javassist.version>
-		<joda-time.version>2.3</joda-time.version>
-		<c3p0.version>0.9.5-pre8</c3p0.version>
-		<maven.compiler.target>1.6</maven.compiler.target>
-		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
 	<dependencies>
 		<!-- logger dependency -->
@@ -73,12 +68,6 @@
 			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-j2ee_1.4_spec</artifactId>
-			<version>${geronimo-j2ee_1.4_spec-release-version}</version>
-			<scope>provided</scope>
-		</dependency>
 		<!--3RD party -->
 		<dependency>
 			<groupId>com.google.code.simple-spring-memcached</groupId>
@@ -90,17 +79,6 @@
 			<artifactId>guava</artifactId>
 			<version>11.0.2</version>
 		</dependency>
-		        <!-- Hibernate related dependencies -->
-		        <dependency>
-		            <groupId>org.hibernate</groupId>
-		            <artifactId>hibernate-core</artifactId>
-		            <version>${hibernate.version}</version>
-		        </dependency>
-		        <dependency>
-		            <groupId>org.javassist</groupId>
-		            <artifactId>javassist</artifactId>
-		            <version>${javassist.version}</version>
-        </dependency>
 		<!-- DATABASE DEPENDENCY -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -115,4 +93,17 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

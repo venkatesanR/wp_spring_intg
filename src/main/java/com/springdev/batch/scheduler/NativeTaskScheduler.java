@@ -1,5 +1,7 @@
 package com.springdev.batch.scheduler;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
@@ -14,12 +16,12 @@ public class NativeTaskScheduler {
 	private static final Logger logger = Logger.getLogger(NativeTaskScheduler.class);
 	private JobLauncher launcher;
 	private JobExecution execution;
-	private Job job;
+	private List<Job> jobList;
 	private boolean run;
 
-	public NativeTaskScheduler(JobLauncher launcher, Job job) {
+	public NativeTaskScheduler(JobLauncher launcher, List<Job> incJobList) {
 		this.launcher = launcher;
-		this.job = job;
+		this.jobList = incJobList;
 	}
 
 	public void setRun(boolean run) {
@@ -28,8 +30,11 @@ public class NativeTaskScheduler {
 
 	public void run() {
 		try {
-			logger.info("****************  JOB_NAME::"+job.getName());
-			execution = launcher.run(job, new JobParameters());
+			if (jobList != null && !jobList.isEmpty()) {
+				for (Job job : jobList) {
+					execution = launcher.run(job, new JobParameters());
+				}
+			}
 		} catch (JobExecutionAlreadyRunningException e) {
 			logger.debug(e);
 		} catch (JobRestartException e) {
