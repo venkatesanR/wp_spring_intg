@@ -16,7 +16,7 @@
 		<property name="jobRepository" ref="jobRepository" />
 	</bean>
 
-	<batch:job id="pending_deal_update_status">
+	<batch:job id="update_status">
 		<batch:step id="step1">
 			<batch:tasklet transaction-manager="transactionManager"
 				allow-start-if-complete="true">
@@ -36,15 +36,16 @@
 	</bean>
 	<bean id="processor" class="com.springdev.batch.item.BatchProcessor">
 	</bean>
-	<bean id="dealService" class="com.springdev.batch.item.DealService">
+	<bean id="dealService" class="com.springdev.batch.item.SampleService">
 	</bean>
 	<bean id="scheduler" class="com.springdev.batch.scheduler.NativeTaskScheduler">
 		<constructor-arg ref="jobLauncher" />
 		<constructor-arg>
 			<list>
-				<ref bean="pending_deal_update_status" />
+				<ref bean="update_status" />
 			</list>
 		</constructor-arg>
+		<property name="run" value="false"/>
 	</bean>
 
 	<task:scheduled-tasks>

@@ -10,8 +10,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 
-public class AbstractManagerDAO implements DAOInterFace{
-	private static final transient Logger logger=Logger.getLogger(AbstractManagerDAO.class);
+public class AbstractManagerDAO implements DAOInterFace {
+	private static final transient Logger logger = Logger.getLogger(AbstractManagerDAO.class);
 	private DBConnectionUtility dbUtils;
 
 	public DBConnectionUtility getDbUtils() {
@@ -24,8 +24,7 @@ public class AbstractManagerDAO implements DAOInterFace{
 
 	@Override
 	public void insert(String sqlKey, Object objectInfo) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -34,7 +33,7 @@ public class AbstractManagerDAO implements DAOInterFace{
 	}
 
 	@Override
-	public <T> List<T> select(String sqlKey, Object objectInfo) {
+	public <T> List<T> select(String sqlKey, Class clazz, Object objectInfo) {
 		Connection conn = null;
 		ResultSet resulsts = null;
 		Statement stmnt = null;
@@ -47,9 +46,9 @@ public class AbstractManagerDAO implements DAOInterFace{
 			if (resulsts != null) {
 				result = new ArrayList<T>();
 				while (resulsts.next()) {
-					T dbRef=null;
+					T dbRef = null;
 					result.add(dbRef);
-                }
+				}
 			}
 
 		} catch (SQLException sqe) {

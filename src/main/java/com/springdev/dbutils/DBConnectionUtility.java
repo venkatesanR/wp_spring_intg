@@ -7,8 +7,7 @@ import java.sql.SQLException;
 import org.apache.log4j.Logger;
 
 public class DBConnectionUtility {
-	private static final transient Logger logger = Logger
-			.getLogger(DBConnectionUtility.class);
+	private static final transient Logger logger = Logger.getLogger(DBConnectionUtility.class);
 	private DataBaseInfo dbInfo;
 
 	public DataBaseInfo getDbInfo() {
@@ -23,9 +22,8 @@ public class DBConnectionUtility {
 		Connection connection = null;
 		try {
 			Class.forName(getDbInfo().getDbClassName());
-			connection = DriverManager.getConnection(getDbInfo()
-					.getDriverManager(), getDbInfo().getUserName(), getDbInfo()
-					.getPassword());
+			connection = DriverManager.getConnection(getDbInfo().getDriverManager(), getDbInfo().getUserName(),
+					getDbInfo().getPassword());
 		} catch (ClassNotFoundException e) {
 			logger.error("Error while creating connection", e);
 		} catch (SQLException e) {

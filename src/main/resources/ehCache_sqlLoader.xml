@@ -1,14 +1,14 @@
 <sql-dataset>
-	<sql-info query-name="selectUserDetailsById">
+	<sql-info query-key="selectUserDetailsById">
 		<sql-query>
 			SELECT USER_NAME,EMAIL FROM USERS WHERE USER_ID=?
 		</sql-query>
-		<sql-set-properties>
+		<set-properties>
 			<property name="userName" type="CDT_STRING" />
 			<property name="email" type="CDT_STRING" />
-		</sql-set-properties>
-		<sql-get-properties>
+		</set-properties>
+		<get-properties>
 			<property name="userId" type="CDT_INTGER" />
-		</sql-get-properties>
+		</get-properties>
 	</sql-info>
 </sql-dataset>

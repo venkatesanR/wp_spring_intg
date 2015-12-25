@@ -30,11 +30,12 @@ public class NativeTaskScheduler {
 
 	public void run() {
 		try {
-			if (jobList != null && !jobList.isEmpty()) {
+			if (run && jobList != null && !jobList.isEmpty()) {
 				for (Job job : jobList) {
 					execution = launcher.run(job, new JobParameters());
 				}
 			}
+			logger.info("Execution Completed");
 		} catch (JobExecutionAlreadyRunningException e) {
 			logger.debug(e);
 		} catch (JobRestartException e) {

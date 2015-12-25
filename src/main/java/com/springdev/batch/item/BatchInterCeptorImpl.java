@@ -11,9 +11,9 @@ import com.springdev.cfc.GenericBean;
 public class BatchInterCeptorImpl<T> extends ObjectUtils implements  BatchInterCeptor<T> {
 	private static final Logger logger = Logger.getLogger(NativeTaskScheduler.class);
 
-	private DealService dealService;
+	private SampleService dealService;
 	
-	public void setDealService(DealService dealService) {
+	public void setDealService(SampleService dealService) {
 		this.dealService = dealService;
 	}
 

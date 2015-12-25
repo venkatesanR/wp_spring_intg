@@ -14,6 +14,7 @@
 		<ehCache.version>2.9.0</ehCache.version>
 		<springbatch.version>3.0.1.RELEASE</springbatch.version>
 		<mysql-driver-vers>5.1.6</mysql-driver-vers>
+		<jaxb-vers>2.2.6</jaxb-vers>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
@@ -78,6 +79,11 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>11.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>${jaxb-vers}</version>
 		</dependency>
 		<!-- DATABASE DEPENDENCY -->
 		<dependency>

@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.springdev.cfc.GenericBean;
 
-public class DealService {
+public class SampleService {
 	public List<GenericBean> getDeals() {
 		List<GenericBean> beanList = new ArrayList<GenericBean>();
 		for (int i = 0; i < 10; i++) {
