@@ -53,9 +53,11 @@ public class DBDataUtils extends ObjectUtils{
 	}
 
 	private void finiteLookupMachine(NodeList nodeList) {
+		Map<String, SQLMapper> sqlMapper = null;
 		for (int count = 0; count < nodeList.getLength(); count++) {
 			Node tempNode = nodeList.item(count);
 			if (tempNode.getNodeType() == Node.ELEMENT_NODE) {
+				SQLMapper mapperInfo = null;
 				if ("sql-info".equals(tempNode.getNodeName())) {
 					mapperInfo.setSqlKey(getNodeAttrsValueByName(tempNode, "query-key"));
 					if (tempNode.hasChildNodes() && tempNode.getChildNodes().getLength() ==3) {

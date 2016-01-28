@@ -2,22 +2,28 @@ package com.commons.utils;
 
 import java.io.File;
 import java.lang.reflect.Field;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Collection;
+import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import org.apache.commons.beanutils.DynaBean;
+import org.apache.commons.beanutils.WrapDynaBean;
 import org.apache.log4j.Logger;
 
-import com.springdev.dbutils.DBConnectionUtility;
-
 public class ObjectUtils {
-	private static final transient Logger logger = Logger.getLogger(DBConnectionUtility.class);
+	private static final transient Logger logger = Logger.getLogger(ObjectUtils.class);
 
-	public static String printBeanProperites(Object object) {
-		if (object == null)
-			return "";
+	public static void printBeanProperites(Object object) {
+		if (object == null) {
+			logger.error("\n Null data is not able to process") ;
+			return;
+		}
 		StringBuffer buffer = new StringBuffer(object.getClass().getName() + "\n");
 		try {
 			Field[] fields = object.getClass().getDeclaredFields();
@@ -33,10 +39,10 @@ public class ObjectUtils {
 				for (int j = 0; j < objects.length; j++)
 					buffer.append("\t\t\t\t").append(objects[j]).append("\n");
 			}
-			return buffer.toString();
+			logger.info(buffer.toString());
 		} catch (IllegalAccessException iae) {
 			buffer.append("\n").append("Error Accessing variable " + iae);
-			return buffer.toString();
+			logger.error(buffer.toString());
 		}
 	}
 
@@ -65,6 +71,22 @@ public class ObjectUtils {
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+
+	public void setProperties(Object object, Statement stmnt, Collection<KeyValuePair> properties) {
+		if (object == null)
+			return;
+		DynaBean wrapper = new WrapDynaBean(object);
+		if (properties != null && !properties.isEmpty()) {
+			for (KeyValuePair prop : properties) {
+				wrapper.set(String.valueOf(prop.getKey()), prop.getValue());
+			}
+		}
+		wrapper.set("", object);
+	}
+
+	public <T> T getProperties(Class clazz, ResultSet resultSet,Map<String,Object> properties) {
 		return null;
 	}
 }

@@ -36,10 +36,12 @@ update and merge
 to update your local repository to the newest commit, execute 
  >git pull
 in your working directory to fetch and merge remote changes.
+
 to merge another branch into your active branch (e.g. master), use
 git merge <branch>
 in both cases git tries to auto-merge changes. Unfortunately, this is not always possible and results in conflicts. You are responsible to merge those conflicts manually by editing the files shown by git. After changing, you need to mark them as merged with
  > git add <filename>
+ 
 before merging changes, you can also preview them by using
  > git diff <source_branch> <target_branch>
 
@@ -171,15 +173,15 @@ format of metadata>
 
 BeanDefination Object:
 ----------------------
-	class:the section called “Instantiating beans”
-	name :the section called “Naming beans”
-	scope :Section 5.5, “Bean scopes”
-	constructor arguments :the section called “Dependency injection”
-	properties: the section called “Dependency injection”
-	autowiring mode: the section called “Autowiring collaborators”
-	lazy-initialization mode: the section called “Lazy-initialized beans”
-	initialization method :the section called “Initialization callbacks”
-	destruction method :the section called “Destruction callbacks”
+	class:the section called ï¿½Instantiating beansï¿½
+	name :the section called ï¿½Naming beansï¿½
+	scope :Section 5.5, ï¿½Bean scopesï¿½
+	constructor arguments :the section called ï¿½Dependency injectionï¿½
+	properties: the section called ï¿½Dependency injectionï¿½
+	autowiring mode: the section called ï¿½Autowiring collaboratorsï¿½
+	lazy-initialization mode: the section called ï¿½Lazy-initialized beansï¿½
+	initialization method :the section called ï¿½Initialization callbacksï¿½
+	destruction method :the section called ï¿½Destruction callbacksï¿½
 
 
 
@@ -191,7 +193,7 @@ org.springframework.cache.CacheManager interfaces.
 
 There are a few implementations of that abstraction available out of the box: JDK
 java.util.concurrent.ConcurrentMap based caches, EhCache, Gemfire cache, Guava caches
-and JSR-107 compliant caches. See Section 30.7, “Plugging-in different back-end caches” for more
+and JSR-107 compliant caches. See Section 30.7, ï¿½Plugging-in different back-end cachesï¿½ for more
 information on plugging in other cache stores/providers.
 
 
@@ -201,8 +203,31 @@ cache configuartion
 Annotation Based caching
 -----------------------
 For caching declaration, the abstraction provides a set of Java annotations:
-• @Cacheable triggers cache population
-• @CacheEvict triggers cache eviction(update)
-• @CachePut updates the cache without interfering with the method execution
-• @Caching regroups multiple cache operations to be applied on a method
-• @CacheConfig shares some common cache-related settings at class-level
+ï¿½ @Cacheable triggers cache population
+ï¿½ @CacheEvict triggers cache eviction(update)
+ï¿½ @CachePut updates the cache without interfering with the method execution
+ï¿½ @Caching regroups multiple cache operations to be applied on a method
+ï¿½ @CacheConfig shares some common cache-related settings at class-level
+============================================================================================================================
+Custom Object Based Searching utils:
+------------------------------------
+Components in tree:
+-------------------
+RootNode
+Levels
+LeafNodes
+
+Tree initialization:
+--------------------
+population of toplevel nodes
+
+
+
+Tree serach(incremental)
+------------------------
+search(searchcriteria)
+
+
+Tree cache refresh(incremental)
+--------------------------------
+truncate/add/update

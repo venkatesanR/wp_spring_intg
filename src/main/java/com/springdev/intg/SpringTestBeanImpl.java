@@ -51,7 +51,7 @@ public class SpringTestBeanImpl extends ObjectUtils implements SpringTestBean {
 				.getBeanDefinitionNames();
 		if (beanDefinations != null && beanDefinations.length > 0) {
 			for (String beanType : beanDefinations) {
-				logger.info(printBeanProperites(helper.getBean(beanType)));
+				printBeanProperites(helper.getBean(beanType));
 			}
 		}
 	}

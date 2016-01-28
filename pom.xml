@@ -15,6 +15,8 @@
 		<springbatch.version>3.0.1.RELEASE</springbatch.version>
 		<mysql-driver-vers>5.1.6</mysql-driver-vers>
 		<jaxb-vers>2.2.6</jaxb-vers>
+		<bean-utils>1.9.2</bean-utils>
+		<poi-vers>3.8</poi-vers>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
@@ -85,6 +87,21 @@
 			<artifactId>jaxb-api</artifactId>
 			<version>${jaxb-vers}</version>
 		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${bean-utils}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${poi-vers}</version>
+		</dependency>
+<!-- 		<dependency>
+			<groupId>com.sun.xml.wss</groupId>
+			<artifactId>xws-security</artifactId>
+			<version>3.0</version>
+		</dependency> -->
 		<!-- DATABASE DEPENDENCY -->
 		<dependency>
 			<groupId>mysql</groupId>

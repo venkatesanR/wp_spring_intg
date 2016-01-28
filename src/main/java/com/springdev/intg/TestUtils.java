@@ -7,43 +7,91 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.LocalDate;
+import java.util.Random;
 import java.util.Scanner;
 
-import javax.xml.crypto.dsig.keyinfo.KeyValue;
-
-import com.commons.utils.KeyValuePair;
+import com.commons.utils.FileUtils;
 import com.commons.utils.ObjectUtils;
-import com.commons.utils.SQLMapper;
-import com.springdev.dbutils.DBDataUtils;
 
 public class TestUtils extends BeanHelper<Object> {
-	public static void main(String args[]) {
-		/*
-		 * GenericBean beanInfo = new GenericBean();
-		 * beanInfo.setPropertyName("Mist"); beanInfo.setPropertyValue("Must");
-		 * LocalStorageOfObject.storeObjectInLocal(beanInfo, "GENERIC_INFO");
-		 * LocalStorageOfObject.printAllBeans(); A ref=new A();
-		 * largestOfThree(); //readFileInfo(); computePrint();
+	private static final String alphaSeriesTxt = "BXGLWANRPQ";
+	static BigDecimal revenue = new BigDecimal(.004);
+	static BigDecimal impressions = new BigDecimal(1);
+	
+	public static void main(String args[]) throws Exception {
+		//BigDecimal cpm = revenue.divide(impressions, 6, RoundingMode.CEILING);
+		//cpm = cpm.multiply(new BigDecimal(1000)).setScale(2, RoundingMode.CEILING);
+		//System.out.println("CPM:" + cpm);
+		//System.out.println("CPM:" + computeCPM(impressions, revenue, "CPM"));
+		//testSummaryExport();
+		 // InsertExcelFileToDB();
+		 LocalDate localDate=LocalDate.now();
+		System.out.println(localDate);
+		System.out.println(getDateRangeById(0, 1, 3));
+	}
+
+
+	private static String getDateRangeById(int factor1, int factor2, Integer dateRangeId) throws Exception {
+		String localDate = null;
+		if (dateRangeId != null && dateRangeId.equals(3)) {
+			localDate = LocalDate.now().plusDays(-1 * (factor1 * 6)).toString() + "-"
+					+LocalDate.now().plusDays(-1 * (factor2 * 6)).toString();
+		} else if (dateRangeId != null && dateRangeId.equals(6)) {
+			localDate = LocalDate.now().plusDays(-1 * (factor1 * 29)) + "-"
+					+ LocalDate.now().plusDays(-1 * ((factor2) * 29));
+		} else if (dateRangeId != null && dateRangeId.equals(9)) {
+			localDate = LocalDate.now().plusMonths(-1 * (factor1)) + "-" + LocalDate.now().plusMonths(-1 * ((factor2)));
+		}
+		return localDate;
 		
-		KeyValuePair pari=new KeyValuePair();
-		pari.setKey("name");
-		pari.setValue("val");
-		Collection<KeyValuePair> collec=new ArrayList<KeyValuePair>();
-		collec.add(pari);
-		collec.add(pari);
-		collec.add(pari);
-		collec.add(pari);
-		collec.add(pari);
-		SQLMapper mapperInfo = new SQLMapper();
-		mapperInfo.setSqlKey("Key");
-		mapperInfo.setSqlQuery("Select * from abc");
-		mapperInfo.setInputParams(collec);
-		mapperInfo.setOuputParams(collec);
-		ObjectUtils.ObjectToXml(SQLMapper.class, mapperInfo);
-		prepareXmlToDbObject */
-		System.out.println(ObjectUtils.printBeanProperites(DBDataUtils.prepareXmlToDbObject("/home/yumecorp/Desktop/YuMe-WorkPlace/wp_spring_intg/src/main/resources/ehCache_sqlLoader.xml")));
+	}
+
+	
+	public static BigDecimal computeCPM(BigDecimal impression, BigDecimal revenue, String CostMethod) {
+		BigDecimal computedCPM = revenue;
+		if (impression.compareTo(BigDecimal.ZERO) > 0) {
+			if (CostMethod.equalsIgnoreCase("CPM")) {
+				computedCPM = (revenue.divide(impression, 6, RoundingMode.CEILING)).multiply(new BigDecimal(1000))
+						.setScale(2, RoundingMode.CEILING);
+			} else
+				computedCPM = (revenue.divide(impression)).setScale(2, RoundingMode.CEILING);
+		}
+		return computedCPM;
+	}
+
+	private static int getRandomNum(Random r) {
+		return r.nextInt(10000);
+	}
+
+	public static String encryptVariable(String text) {
+		String encrypted = "";
+		for (char ch : text.toCharArray()) {
+			encrypted = (ch == '-') ? encrypted + "T"
+					: encrypted + alphaSeriesTxt.charAt(Integer.parseInt(Character.toString(ch)));
+		}
+		return encrypted;
+	}
+
+	public static String decryptVariable(String encrypted) {
+		String text = "";
+		for (char ch : encrypted.toCharArray()) {
+			text = (ch == 'T') ? text + "-" : text + alphaSeriesTxt.indexOf(ch);
+		}
+		return text;
+	}
+
+	private static void tabSquare(int length) {
+		int square;
+		int a = 1;
+		while (a < length) {
+			square = a * a;
+
+			System.out.println(square);
+			a = a + 1;
+		}
 	}
 
 	private static void computePrint() {
@@ -102,6 +150,10 @@ public class TestUtils extends BeanHelper<Object> {
 			}
 		}
 
+	}
+
+	private static void InsertExcelFileToDB() {
+		ObjectUtils.printBeanProperites(FileUtils.fileToString("/home/YUME.COM/vrengasamy/Desktop/Task_5.1", true));
 	}
 
 	@SuppressWarnings("static-access")

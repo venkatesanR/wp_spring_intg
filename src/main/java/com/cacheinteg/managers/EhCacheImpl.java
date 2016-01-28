@@ -13,13 +13,11 @@ import org.apache.log4j.Logger;
 import com.springdev.intg.SpringTestBeanImpl;
 
 public class EhCacheImpl implements CacheInterFace {
-	private static final transient Logger logger = Logger
-			.getLogger(SpringTestBeanImpl.class);
+	private static final transient Logger logger = Logger.getLogger(SpringTestBeanImpl.class);
 	private CacheManager cacheManager;
 
 	public EhCacheImpl(String ehCacheConfigLoc) {
-		cacheManager = new CacheManager(
-				this.getCacheConfiguration(ehCacheConfigLoc));
+		cacheManager = new CacheManager(this.getCacheConfiguration(ehCacheConfigLoc));
 	}
 
 	public EhCacheImpl() {

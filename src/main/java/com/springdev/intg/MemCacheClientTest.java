@@ -8,32 +8,31 @@ import com.commons.utils.LocalStorageOfObject;
 import net.spy.memcached.MemcachedClient;
 
 public class MemCacheClientTest extends LocalStorageOfObject {
-	// 24 * 60 * 60 * 365
 	private static final Integer TTL = 10000;
 	private static String inetAdrs = "172.18.8.143";
-	private static String inetAdrs2 = "10.10.37.120";
-	private static String remoteCacheKeys = "3_1_6_20151025_20151123_6_102,3_1_7_20151101_20151130_6_102,2_1_6_20151025_20151123_6_102,2_2_6_20151025_20151123_6_102,1_1_6_20151025_20151123_6_102,1_2_6_20151025_20151123_6_102_0";
-	private static final String keyafix = "155_275";
-	private static final String datRangId = "20151025_20151124";
+	private static String inetAdrs2 = "10.10.10.161";
+	private static String remoteCacheKeys = "3_1_6_20151201_20161230_6_271," + "3_1_7_20151201_20161231_6_271,"
+			+ "2_1_6_20151201_20161230_6_271," + "2_2_6_20151201_20161230_6_271," + "1_1_6_20151201_20161230_6_271,"
+			+ "1_2_6_20151201_20161230_6_271_0";
+	private static final String keyafix = "95_225";
+	private static final String datRangId = "20151201_20151231";
+	private static LocalStorageOfObject localStorageOfObject = new LocalStorageOfObject();
 
 	public static void main(String[] args) {
-/*		MemcachedClient local = null;
+		MemcachedClient local = null;
 		MemcachedClient remote = null;
 		try {
 			local = new MemcachedClient(new InetSocketAddress(inetAdrs, 11211));
 			remote = new MemcachedClient(new InetSocketAddress(inetAdrs2, 11211));
-			//prepareAndLoadDataFromRemote(remote, local);
-			// printAllBeans();
-			storeObjectInLocal(new Boolean(false), "dealStatusChangeJob");
-			//printLocalCachedData(local);
+			loadInLocal(local, remote.get("YFP:Report:1_1_7_20160101_20160131_2_11"),
+					"YFP:Report:1_1_6_20151221_20160120_95_305");
+			printBeanProperites(local.get("YFP:Report:1_1_6_20151221_20160120_95_305"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			local.shutdown();
 			remote.shutdown();
-		}*/
-		storeObjectInLocal(new Boolean(false), "dealStatusChangeJob");
-		printAllBeans();
+		}
 	}
 
 	public static String prepareLocalKey(String prefix, String zeroPadding) {
@@ -51,7 +50,7 @@ public class MemCacheClientTest extends LocalStorageOfObject {
 		for (int index = 0; index < remoteKeys.length; index++) {
 			localKey = "YFP:Report:" + prepareLocalKey(remoteKeys[index].substring(0, 5), null);
 			data = local.get(localKey);
-			System.out.println("KEY:" + localKey + "  Bean::" + printBeanProperites(data));
+			printBeanProperites(data);
 		}
 	}
 
@@ -61,6 +60,21 @@ public class MemCacheClientTest extends LocalStorageOfObject {
 		}
 		local.delete(key);
 		local.add(key, TTL, preparedObject);
+	}
+
+	public static void setRemoteToLocalSingle(MemcachedClient remote, MemcachedClient local, String remoteKey,
+			String localKey) throws IOException {
+		Object data = remote.get(remoteKey);
+		loadInLocal(local, data, localKey);
+	}
+
+	public static void printAllRemoteBeans(MemcachedClient remote, MemcachedClient local) throws IOException {
+		String[] remoteKeys = remoteCacheKeys.split(",");
+		String remoteKey;
+		for (int index = 0; index < remoteKeys.length; index++) {
+			remoteKey = "YFP:Report:" + remoteKeys[index];
+			printBeanProperites(localStorageOfObject.getLocalObjectUsingKey(remoteKey));
+		}
 	}
 
 	public static void prepareAndLoadDataFromRemote(MemcachedClient remote, MemcachedClient local) throws IOException {
@@ -73,12 +87,15 @@ public class MemCacheClientTest extends LocalStorageOfObject {
 			remoteKey = "YFP:Report:" + remoteKeys[index];
 			localKey = "YFP:Report:" + prepareLocalKey(remoteKeys[index].substring(0, 5),
 					String.valueOf(remoteKey.charAt(remoteKey.length() - 1)).equals("0") ? "0" : null);
-			isInLocal = LocalStorageOfObject.getLocalObjectUsingKey(remoteKey) != null;
-			data = isInLocal ? LocalStorageOfObject.getLocalObjectUsingKey(remoteKey) : remote.get(remoteKey);
-			System.out.println("KEY:" + localKey + "  Bean::" + printBeanProperites(data));
+			isInLocal = localStorageOfObject.getLocalObjectUsingKey(remoteKey) != null;
+			data = isInLocal ? localStorageOfObject.getLocalObjectUsingKey(remoteKey) : remote.get(remoteKey);
+			System.out.println("KEY:" + localKey);
+			printBeanProperites(data);
+			System.out.println("KEY:" + remoteKey);
+			printBeanProperites(localStorageOfObject.getLocalObjectUsingKey(remoteKey));
 			loadInLocal(local, data, localKey);
 			if (!isInLocal) {
-				LocalStorageOfObject.storeObjectInLocal(data, remoteKey);
+				localStorageOfObject.storeObjectInLocal(data, remoteKey);
 			}
 		}
 	}

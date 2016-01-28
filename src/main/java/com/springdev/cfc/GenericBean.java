@@ -1,9 +1,12 @@
 package com.springdev.cfc;
 
+import java.util.Date;
+
 public class GenericBean {
 	private String propertyName;
 	private String propertyValue;
-
+	private Date dateProperty;
+	
 	private NestedBean nestedRef;
 
 	public GenericBean() {
@@ -37,6 +40,14 @@ public class GenericBean {
 
 	public void setNestedRef(NestedBean nestedRef) {
 		this.nestedRef = nestedRef;
+	}
+
+	public Date getDateProperty() {
+		return dateProperty;
+	}
+
+	public void setDateProperty(Date dateProperty) {
+		this.dateProperty = dateProperty;
 	}
 
 	public static class NestedBean {
