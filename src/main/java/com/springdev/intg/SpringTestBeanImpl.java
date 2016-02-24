@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 
 import com.cacheinteg.managers.CacheAccessUtils;
 import com.commons.utils.ObjectUtils;
+import com.springdev.ldap.CustomLdapUtil;
 
 public class SpringTestBeanImpl extends ObjectUtils implements SpringTestBean {
 	private static final transient Logger logger = Logger
@@ -54,5 +55,11 @@ public class SpringTestBeanImpl extends ObjectUtils implements SpringTestBean {
 				printBeanProperites(helper.getBean(beanType));
 			}
 		}
+	}
+
+	@Override
+	public boolean testCredentials(BeanHelper helper, String userName, String password) {
+		CustomLdapUtil ldapUtl = (CustomLdapUtil) helper.getBean("ldapUtils");
+		return ldapUtl.authenticate(userName, password);
 	}
 }

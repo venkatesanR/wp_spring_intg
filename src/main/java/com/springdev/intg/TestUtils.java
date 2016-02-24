@@ -15,30 +15,24 @@ import java.util.Scanner;
 
 import com.commons.utils.FileUtils;
 import com.commons.utils.ObjectUtils;
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
 
 public class TestUtils extends BeanHelper<Object> {
 	private static final String alphaSeriesTxt = "BXGLWANRPQ";
 	static BigDecimal revenue = new BigDecimal(.004);
 	static BigDecimal impressions = new BigDecimal(1);
-	
+
 	public static void main(String args[]) throws Exception {
-		//BigDecimal cpm = revenue.divide(impressions, 6, RoundingMode.CEILING);
-		//cpm = cpm.multiply(new BigDecimal(1000)).setScale(2, RoundingMode.CEILING);
-		//System.out.println("CPM:" + cpm);
-		//System.out.println("CPM:" + computeCPM(impressions, revenue, "CPM"));
-		//testSummaryExport();
-		 // InsertExcelFileToDB();
-		 LocalDate localDate=LocalDate.now();
-		System.out.println(localDate);
-		System.out.println(getDateRangeById(0, 1, 3));
+		restClientTest();
 	}
 
-
-	private static String getDateRangeById(int factor1, int factor2, Integer dateRangeId) throws Exception {
+	public static String getDateRangeById(int factor1, int factor2, Integer dateRangeId) throws Exception {
 		String localDate = null;
 		if (dateRangeId != null && dateRangeId.equals(3)) {
 			localDate = LocalDate.now().plusDays(-1 * (factor1 * 6)).toString() + "-"
-					+LocalDate.now().plusDays(-1 * (factor2 * 6)).toString();
+					+ LocalDate.now().plusDays(-1 * (factor2 * 6)).toString();
 		} else if (dateRangeId != null && dateRangeId.equals(6)) {
 			localDate = LocalDate.now().plusDays(-1 * (factor1 * 29)) + "-"
 					+ LocalDate.now().plusDays(-1 * ((factor2) * 29));
@@ -46,10 +40,9 @@ public class TestUtils extends BeanHelper<Object> {
 			localDate = LocalDate.now().plusMonths(-1 * (factor1)) + "-" + LocalDate.now().plusMonths(-1 * ((factor2)));
 		}
 		return localDate;
-		
+
 	}
 
-	
 	public static BigDecimal computeCPM(BigDecimal impression, BigDecimal revenue, String CostMethod) {
 		BigDecimal computedCPM = revenue;
 		if (impression.compareTo(BigDecimal.ZERO) > 0) {
@@ -165,4 +158,26 @@ public class TestUtils extends BeanHelper<Object> {
 		}
 	}
 
+	//http://qa-ydmp-app.dev.yumenetworks.com/2/api/get_datavendor?email=mvenkatesan@yume.com&password=test12
+	private static void restClientTest() {
+		try {
+			Client client = Client.create();
+			WebResource webResource = client.resource(
+					"http://qa-ydmp-app.dev.yumenetworks.com/2/api/get_datavendor?email=mvenkatesan@yume.com&password=test12");
+			ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
+			if (response.getStatus() != 200) {
+				throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
+			}
+			String output = response.getEntity(String.class);
+
+			System.out.println("Output from Server .... \n");
+			System.out.println(output);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+	}
 }

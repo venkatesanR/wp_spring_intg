@@ -19,10 +19,9 @@ import org.apache.log4j.Logger;
 public class ObjectUtils {
 	private static final transient Logger logger = Logger.getLogger(ObjectUtils.class);
 
-	public static void printBeanProperites(Object object) {
+	public static String printBeanProperites(Object object) {
 		if (object == null) {
 			logger.error("\n Null data is not able to process") ;
-			return;
 		}
 		StringBuffer buffer = new StringBuffer(object.getClass().getName() + "\n");
 		try {
@@ -34,16 +33,15 @@ public class ObjectUtils {
 				buffer.append("\t\t").append(field.getName()).append("\t:\t").append(fieldObjects).append("\n");
 				if (!(fieldObjects instanceof Object[]))
 					continue;
-				// handle the Objects present as array here
 				Object[] objects = (Object[]) fieldObjects;
 				for (int j = 0; j < objects.length; j++)
 					buffer.append("\t\t\t\t").append(objects[j]).append("\n");
 			}
-			logger.info(buffer.toString());
 		} catch (IllegalAccessException iae) {
 			buffer.append("\n").append("Error Accessing variable " + iae);
 			logger.error(buffer.toString());
 		}
+		return buffer.toString();
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -83,10 +81,24 @@ public class ObjectUtils {
 				wrapper.set(String.valueOf(prop.getKey()), prop.getValue());
 			}
 		}
-		wrapper.set("", object);
 	}
 
 	public <T> T getProperties(Class clazz, ResultSet resultSet,Map<String,Object> properties) {
 		return null;
+	}
+	
+	public static <T> T[] arrayCopy(T[] source, T[] dest) {
+		if (source != null && dest != null && source.length <= dest.length) {
+			int count = 0;
+			for (T data : source) {
+				dest[count] = data;
+				count = count + 1;
+			}
+		}
+		return dest;
+	}
+	
+	public static String printArrayToString() {
+		
 	}
 }

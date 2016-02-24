@@ -16,7 +16,7 @@
 		<property name="propertyName" value="Doodlers" />
 		<property name="nestedRef" ref="nestedBean" />
 	</bean>
-	<bean id="nestedBean" class="com.springdev.cfc.GenericBean$NestedBean">
+		<bean id="nestedBean" class="com.springdev.cfc.GenericBean$NestedBean">
 	</bean>
 
 	<!--Bean Creator via Factory Bean And Factory Method -->

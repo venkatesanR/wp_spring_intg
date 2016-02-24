@@ -2,10 +2,7 @@ package com.springdev.batch.item;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
 import com.commons.utils.ObjectUtils;
-import com.springdev.batch.scheduler.NativeTaskScheduler;
 import com.springdev.cfc.GenericBean;
 
 public class BatchInterCeptorImpl<T> extends ObjectUtils implements BatchInterCeptor<T> {

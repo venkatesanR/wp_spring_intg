@@ -8,9 +8,6 @@ import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.annotation.BeforeStep;
 import org.springframework.batch.item.ItemWriter;
 
-import com.commons.utils.ObjectUtils;
-import com.springdev.cfc.GenericBean;
-
 public class BatchWriter<T> implements ItemWriter<T> {
 	private static final Logger logger = Logger.getLogger(BatchWriter.class);
 	private String jobName;

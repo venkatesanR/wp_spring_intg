@@ -13,6 +13,8 @@
 		<logger.version>1.2.17</logger.version>
 		<ehCache.version>2.9.0</ehCache.version>
 		<springbatch.version>3.0.1.RELEASE</springbatch.version>
+		<spring-ldap-release-version>2.0.4.RELEASE</spring-ldap-release-version>
+		<spring-data-commons-vers>1.4.1.RELEASE</spring-data-commons-vers>
 		<mysql-driver-vers>5.1.6</mysql-driver-vers>
 		<jaxb-vers>2.2.6</jaxb-vers>
 		<bean-utils>1.9.2</bean-utils>
@@ -71,6 +73,28 @@
 			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>1.8</version>
+		</dependency>
+		<!-- SPRING LDAP DEPENDENCY -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons-core</artifactId>
+			<version>${spring-data-commons-vers}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.ldap</groupId>
+			<artifactId>spring-ldap-core</artifactId>
+			<version>${spring-ldap-release-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.ldap</groupId>
+			<artifactId>spring-ldap-test</artifactId>
+			<version>${spring-ldap-release-version}</version>
+			<scope>compile</scope>
+		</dependency>
 		<!--3RD party -->
 		<dependency>
 			<groupId>com.google.code.simple-spring-memcached</groupId>
@@ -97,11 +121,8 @@
 			<artifactId>poi</artifactId>
 			<version>${poi-vers}</version>
 		</dependency>
-<!-- 		<dependency>
-			<groupId>com.sun.xml.wss</groupId>
-			<artifactId>xws-security</artifactId>
-			<version>3.0</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>com.sun.xml.wss</groupId> <artifactId>xws-security</artifactId> 
+			<version>3.0</version> </dependency> -->
 		<!-- DATABASE DEPENDENCY -->
 		<dependency>
 			<groupId>mysql</groupId>

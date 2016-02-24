@@ -13,5 +13,7 @@ public interface SpringTestBean {
 	public abstract void testMSGImpl();
 
 	public abstract void testAOPImpl();
+	
+	public abstract boolean testCredentials(BeanHelper helper,String userName,String password);
 
 }

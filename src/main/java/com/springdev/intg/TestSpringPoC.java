@@ -8,5 +8,6 @@ public class TestSpringPoC {
 		BeanHelper helper = new BeanHelper();
 		SpringTestBean bean = (SpringTestBean) helper.getBean("testBean");
 		bean.testCacheImpl();
+		System.out.println("Validation Logic:"+bean.testCredentials(helper, "some.person2", "password"));
 	}
 }

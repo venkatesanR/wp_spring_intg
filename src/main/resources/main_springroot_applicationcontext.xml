@@ -19,4 +19,5 @@
 	<import resource="spring_quartz_applicationcontext.xml"/>
 	<import resource="spring_batch_applicationcontext.xml"/>
 	<import resource="spring_cache_applicationcontext.xml"/>
+	<import resource="spring_ldap_applicationcontext.xml"/>
 </beans>

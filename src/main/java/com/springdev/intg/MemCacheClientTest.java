@@ -16,6 +16,7 @@ public class MemCacheClientTest extends LocalStorageOfObject {
 			+ "1_2_6_20151201_20161230_6_271_0";
 	private static final String keyafix = "95_225";
 	private static final String datRangId = "20151201_20151231";
+	//YFP:Report:3_1233
 	private static LocalStorageOfObject localStorageOfObject = new LocalStorageOfObject();
 
 	public static void main(String[] args) {
