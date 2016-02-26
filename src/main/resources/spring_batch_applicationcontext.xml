@@ -38,7 +38,7 @@
 	</bean>
 	<bean id="dealService" class="com.springdev.batch.item.SampleService">
 	</bean>
-	<bean id="scheduler" class="com.springdev.batch.scheduler.NativeTaskScheduler">
+<!-- 	<bean id="scheduler" class="com.springdev.batch.scheduler.NativeTaskScheduler">
 		<constructor-arg ref="jobLauncher" />
 		<constructor-arg>
 			<list>
@@ -46,9 +46,9 @@
 			</list>
 		</constructor-arg>
 		<property name="run" value="false"/>
-	</bean>
+	</bean> -->
 
-	<task:scheduled-tasks>
+<!-- 	<task:scheduled-tasks>
 		<task:scheduled ref="scheduler" method="run" cron="*/15 * * * * *" />
-	</task:scheduled-tasks>
+	</task:scheduled-tasks> -->
 </beans>

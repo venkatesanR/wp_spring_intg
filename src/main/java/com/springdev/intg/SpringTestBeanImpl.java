@@ -60,6 +60,6 @@ public class SpringTestBeanImpl extends ObjectUtils implements SpringTestBean {
 	@Override
 	public boolean testCredentials(BeanHelper helper, String userName, String password) {
 		CustomLdapUtil ldapUtl = (CustomLdapUtil) helper.getBean("ldapUtils");
-		return ldapUtl.authenticate(userName, password);
+		return ldapUtl.yumeServerAuthentication(userName, password);
 	}
 }

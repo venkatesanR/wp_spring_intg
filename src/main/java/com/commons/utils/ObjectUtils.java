@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
@@ -99,6 +100,9 @@ public class ObjectUtils {
 	}
 	
 	public static String printArrayToString() {
-		
+		//Collections.sort(list);
+		return null;
 	}
 }
+
+

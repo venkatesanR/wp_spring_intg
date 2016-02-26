@@ -23,9 +23,18 @@ public class TestUtils extends BeanHelper<Object> {
 	private static final String alphaSeriesTxt = "BXGLWANRPQ";
 	static BigDecimal revenue = new BigDecimal(.004);
 	static BigDecimal impressions = new BigDecimal(1);
-
+	private  static String COMMA_DELIMITER=",";
+	public static String getformattedDataforCSV(String accountCurrencySymbol) {
+		return "\"" + "ASjAS" + "\"" 
+				+ "x"
+				+ COMMA_DELIMITER + "ki"
+				+ COMMA_DELIMITER + "\"" + "sss" + " %" + "\"" 
+				+ COMMA_DELIMITER + "sxsx"
+				+ COMMA_DELIMITER + "\"" + "dx" + " %";
+	}
 	public static void main(String args[]) throws Exception {
-		restClientTest();
+		System.out.println(getformattedDataforCSV("ASJAS"));
+		//restClientTest();
 	}
 
 	public static String getDateRangeById(int factor1, int factor2, Integer dateRangeId) throws Exception {

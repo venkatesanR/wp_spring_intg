@@ -7,7 +7,9 @@ import com.springdev.cfc.User;
 public interface LdapActions {
 	List<User> getAll(boolean isFromServer);
 
-	boolean authenticate(String userDn, String credentials);
+	boolean authenticate(String userDn, String credentials,boolean isServer);
+	
+	boolean yumeServerAuthentication(String domainName, String password);
 
 	public void syncDataFromEnterpriseServer();
 

@@ -25,7 +25,7 @@ public class NativeTaskScheduler {
 	}
 
 	public void setRun(boolean run) {
-		this.run = run;
+		this.run = false;
 	}
 
 	public void run() {
@@ -34,8 +34,9 @@ public class NativeTaskScheduler {
 				for (Job job : jobList) {
 					execution = launcher.run(job, new JobParameters());
 				}
+				logger.info("Execution Completed");
 			}
-			logger.info("Execution Completed");
+			
 		} catch (JobExecutionAlreadyRunningException e) {
 			logger.debug(e);
 		} catch (JobRestartException e) {

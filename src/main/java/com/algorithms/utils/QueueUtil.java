@@ -22,19 +22,57 @@ public class QueueUtil<T> {
 
 	public void enQueue(T element) {
 		frame = MathUtil.loitering(frame, isEmpty(), DEFAULT_FRAME_SIZE, tail, loadFactor);
-		System.out.println(frame.length);
+		if (head != tail + 1) {
+			frame[tail] = element;
+			tail = tail + 1;
+		} else if(head == tail + 1) {
+			logger.error("queue over flow");
+		}
+
 	}
 
 	public T deQueue() {
-		return null;
+		T element = null;
+		if(tail != head ) {
+			element = frame[head];
+			frame[head]=(T) "0";
+			head=head+1;	
+		} else if(tail == head ) {
+			logger.error("queue under flow");
+		}
+		return element;
 	}
 
 	private boolean isEmpty() {
-		return true;
+		return (frame == null || tail == 0);
 	}
 	
 	public static void main(String args[]) {
-		QueueUtil utils = new QueueUtil(0.8);
-		utils.enQueue("Hi");
+		QueueUtil<String> utils = new QueueUtil<String>(0.8);
+		utils.enQueue("X");
+		utils.enQueue("X");
+		utils.enQueue("X");
+		utils.enQueue("X");
+		System.out.println(utils.toString());
+		utils.deQueue();
+		System.out.println(utils.toString());
+		utils.deQueue();
+		System.out.println(utils.toString());
+		utils.deQueue();
+		System.out.println(utils.toString());
+		utils.deQueue();
+	}
+
+	public String toString() {
+		String outpuStack = "|";
+		if (this != null) {
+			for (int index = 0; index < this.tail; index++) {
+				outpuStack = outpuStack
+						+ String.valueOf(" "+this.frame[index] + (this.head == index ? "(H)" : "")
+								+ (index == this.tail - 1 ? "(T)" : "") +" ")
+						+ ((index == this.tail - 1) ? "|": "");
+			}
+		}
+		return outpuStack;
 	}
 }

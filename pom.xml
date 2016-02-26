@@ -13,6 +13,7 @@
 		<logger.version>1.2.17</logger.version>
 		<ehCache.version>2.9.0</ehCache.version>
 		<springbatch.version>3.0.1.RELEASE</springbatch.version>
+		<spring-security-version>3.1.0.RELEASE</spring-security-version>
 		<spring-ldap-release-version>2.0.4.RELEASE</spring-ldap-release-version>
 		<spring-data-commons-vers>1.4.1.RELEASE</spring-data-commons-vers>
 		<mysql-driver-vers>5.1.6</mysql-driver-vers>
@@ -94,6 +95,11 @@
 			<artifactId>spring-ldap-test</artifactId>
 			<version>${spring-ldap-release-version}</version>
 			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-ldap</artifactId>
+			<version>${spring-security-version}</version>
 		</dependency>
 		<!--3RD party -->
 		<dependency>
