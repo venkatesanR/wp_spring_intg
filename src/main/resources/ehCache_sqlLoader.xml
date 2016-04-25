@@ -1,4 +1,4 @@
-<sql-dataset>
+<sql-data-set>
 	<sql-info query-key="selectUserDetailsById">
 		<sql-query>
 			SELECT USER_NAME,EMAIL FROM USERS WHERE USER_ID=?
@@ -11,4 +11,4 @@
 			<property name="userId" type="CDT_INTGER" />
 		</get-properties>
 	</sql-info>
-</sql-dataset>
+</sql-data-set>

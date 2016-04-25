@@ -1,0 +1,2 @@
+//com.springsource.sts.config.flow.coordinates\:http\://www.springframework.org/schema/batch\:/wp_spring_intg/src/main/resources/spring_batch_applicationcontext.xml=<?xml version\="1.0" encoding\="UTF-8"?>\n<graph>\n<element clazz\="JobModelElement" type\="job">\n<structure end\="1335" endstart\="1323" start\="1034" startend\="1064"/>\n<bounds height\="118" width\="153" x\="15" y\="17"/>\n</element>\n</graph>
+eclipse.preferences.version=1

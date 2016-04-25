@@ -9,7 +9,7 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.version>4.0.9.RELEASE</spring.version>
+		<spring.version>4.1.0.RELEASE</spring.version>
 		<logger.version>1.2.17</logger.version>
 		<ehCache.version>2.9.0</ehCache.version>
 		<springbatch.version>3.0.1.RELEASE</springbatch.version>
@@ -126,6 +126,11 @@
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 			<version>${poi-vers}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.aerospike</groupId>
+			<artifactId>aerospike-client</artifactId>
+			<version>[3.0.0,)</version>
 		</dependency>
 		<!-- <dependency> <groupId>com.sun.xml.wss</groupId> <artifactId>xws-security</artifactId> 
 			<version>3.0</version> </dependency> -->

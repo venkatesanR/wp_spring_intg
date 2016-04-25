@@ -5,7 +5,7 @@ http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 http://www.springframework.org/schema/jdbc
 http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd">
 
-    	<!-- connect to MySQL database -->
+	<!-- connect to MySQL database -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -14,14 +14,24 @@ http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd">
 		<property name="password" value="yumecorp" />
 	</bean>
 
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 
-	<!-- create job-meta tables automatically In production you don't need to
-		create this every time. Just create once in production. -->
-<!-- 	<jdbc:initialize-database data-source="dataSource">
-		<jdbc:script location="org/springframework/batch/core/schema-drop-mysql.sql" />
-		<jdbc:script location="org/springframework/batch/core/schema-mysql.sql" />
-	</jdbc:initialize-database> -->
+	<!-- custom database utility implementation -->
+	<bean id="custom_data_source" class="com.springdev.dbutils.DataBaseInfo">
+		<property name="dbClassName" value="com.mysql.jdbc.Driver" />
+		<property name="driverManager" value="jdbc:mysql://localhost:3306/DEV_DB" />
+		<property name="userName" value="root" />
+		<property name="password" value="yumecorp" />
+	</bean>
+	<bean id="dbutils"
+		class="com.springdev.dbutils.DBConnectionUtility">
+		<property name="dbInfo" ref="custom_data_source" />
+	</bean>
+	<bean id="abstractDBManager"
+		class="com.springdev.dbutils.AbstractManagerDAO">
+		<property name="dbUtils" ref="dbutils" />
+	</bean>
 </beans>

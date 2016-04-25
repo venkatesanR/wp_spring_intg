@@ -1,15 +1,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-   http://www.springframework.org/schema/security 
-   http://www.springframework.org/schema/security/spring-security-3.0.xsd">
-   <!-- OU=Chennai,OU=India,OU=Offices,OU=Yume Users,DC=yume,DC=com -->
-     
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   	http://www.springframework.org/schema/security 
+   	http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
 	<bean id="yumeAuthProvider"
 		class="org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider">
-		<constructor-arg value="INC-DC19.yume.com" />
-		<constructor-arg value="ldap://INC-DC19.yume.com/OU=Chennai,OU=India,OU=Offices,OU=Yume Users,DC=yume,DC=com" />
+		<constructor-arg value="yume.com" />
+		<constructor-arg value="ldap://INC-DC19.yume.com" />
 	</bean>
 	<bean id="ldapUtils" class="com.springdev.ldap.CustomLdapUtil">
 		<property name="yumeAuthProvider" ref="yumeAuthProvider" />

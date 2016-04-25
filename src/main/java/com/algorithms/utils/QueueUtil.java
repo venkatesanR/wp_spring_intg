@@ -11,7 +11,6 @@ import org.apache.log4j.Logger;
 public class QueueUtil<T> {
 	private static final Logger logger = Logger.getLogger(QueueUtil.class);
 	private T[] frame = null;
-	private final int DEFAULT_FRAME_SIZE = 10;
 	private Float loadFactor = null;
 	private int head = 0;
 	private int tail = 0;
@@ -21,7 +20,7 @@ public class QueueUtil<T> {
 	}
 
 	public void enQueue(T element) {
-		frame = MathUtil.loitering(frame, isEmpty(), DEFAULT_FRAME_SIZE, tail, loadFactor);
+		frame = MathUtil.loitering(frame, isEmpty(), tail, loadFactor);
 		if (head != tail + 1) {
 			frame[tail] = element;
 			tail = tail + 1;
@@ -49,10 +48,10 @@ public class QueueUtil<T> {
 	
 	public static void main(String args[]) {
 		QueueUtil<String> utils = new QueueUtil<String>(0.8);
-		utils.enQueue("X");
-		utils.enQueue("X");
-		utils.enQueue("X");
-		utils.enQueue("X");
+		utils.enQueue("A");
+		utils.enQueue("B");
+		utils.enQueue("C");
+		utils.enQueue("D");
 		System.out.println(utils.toString());
 		utils.deQueue();
 		System.out.println(utils.toString());
@@ -60,7 +59,7 @@ public class QueueUtil<T> {
 		System.out.println(utils.toString());
 		utils.deQueue();
 		System.out.println(utils.toString());
-		utils.deQueue();
+
 	}
 
 	public String toString() {

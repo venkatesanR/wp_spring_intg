@@ -1,17 +1,14 @@
 package com.springdev.intg;
 
-import org.apache.log4j.Logger;
-
 import com.springdev.ldap.LDAPConstants;
-
+@SuppressWarnings({ "rawtypes" })
 public class TestSpringPoC {
-	private static final Logger logger = Logger.getLogger(TestSpringPoC.class);
-	private static final String oPass=LDAPConstants.CONFEDENTIALS.PASSWORD;
-	@SuppressWarnings({ "rawtypes" })
+	private static final String oPass = LDAPConstants.CONFEDENTIALS.PASSWORD;
+
 	public static void main(String args[]) {
 		BeanHelper helper = new BeanHelper();
-		SpringTestBean bean = (SpringTestBean) helper.getBean("testBean");
-		System.out.println("Validation Logic:"
-				+ bean.testCredentials(helper, "vrengasamy@yume.com", oPass));
+		SpringTestBean test_bean = (SpringTestBean) helper.getBean("testBean");
+		//test_bean.testCacheImpl();
+		test_bean.testCredentials(helper, "vrengasamy@yume.com", oPass);
 	}
 }

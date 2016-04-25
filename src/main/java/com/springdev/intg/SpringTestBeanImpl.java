@@ -3,6 +3,7 @@ package com.springdev.intg;
 import org.apache.log4j.Logger;
 
 import com.cacheinteg.managers.CacheAccessUtils;
+import com.cacheinteg.managers.EhCacheImpl;
 import com.commons.utils.ObjectUtils;
 import com.springdev.ldap.CustomLdapUtil;
 
@@ -22,7 +23,10 @@ public class SpringTestBeanImpl extends ObjectUtils implements SpringTestBean {
 	@Override
 	public void testCacheImpl() {
 		logger.info("test Cache started");
+		EhCacheImpl impl=cacheUtils.getEhCacheUtility();
 		// #1-Eh Cache Test
+		impl.put("testImpl", "Hi", "imur value");
+		logger.info("Results: "+impl.get("testImpl", "Hi"));
 		logger.info("test Cache finished");
 	}
 
@@ -52,7 +56,7 @@ public class SpringTestBeanImpl extends ObjectUtils implements SpringTestBean {
 				.getBeanDefinitionNames();
 		if (beanDefinations != null && beanDefinations.length > 0) {
 			for (String beanType : beanDefinations) {
-				printBeanProperites(helper.getBean(beanType));
+				logger.info(printBeanProperites(helper.getBean(beanType)));
 			}
 		}
 	}
@@ -60,6 +64,6 @@ public class SpringTestBeanImpl extends ObjectUtils implements SpringTestBean {
 	@Override
 	public boolean testCredentials(BeanHelper helper, String userName, String password) {
 		CustomLdapUtil ldapUtl = (CustomLdapUtil) helper.getBean("ldapUtils");
-		return ldapUtl.yumeServerAuthentication(userName, password);
+		return ldapUtl.authAndGetUserInfo(userName, password)!=null;
 	}
 }

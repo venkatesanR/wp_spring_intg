@@ -35,7 +35,7 @@ public class AbstractManagerDAO extends ObjectUtils implements DAOInterFace {
 	}
 
 	@Override
-	public <T> List<T> select(String sqlKey, Class clazz, Object objectInfo) {
+	public <T> List<T> select(String sqlKey, @SuppressWarnings("rawtypes") Class clazz, Object objectInfo) {
 		Connection conn = null;
 		ResultSet resultSet = null;
 		Statement stmnt = null;

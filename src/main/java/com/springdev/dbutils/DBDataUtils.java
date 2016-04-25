@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -19,7 +18,6 @@ import org.xml.sax.SAXException;
 
 import com.commons.utils.KeyValuePair;
 import com.commons.utils.ObjectUtils;
-import com.commons.utils.SQLMapper;
 
 public class DBDataUtils extends ObjectUtils{
 	private static final transient Logger logger = Logger.getLogger(DBConnectionUtility.class);
@@ -34,7 +32,7 @@ public class DBDataUtils extends ObjectUtils{
 			Document doc = dBuilder.parse(fXmlFile);
 			doc.getDocumentElement().normalize();
 			NodeList nList = doc.getElementsByTagName("sql-info");
-			sqlObjList = getConvertedSqlInfo(nList);
+			//sqlObjList = getConvertedSqlInfo(nList);
 		} catch (ParserConfigurationException e) {
 			logger.error("Error while parsing xml::", e);
 			e.printStackTrace();
@@ -46,22 +44,19 @@ public class DBDataUtils extends ObjectUtils{
 		return sqlObjList;
 	}
 
-	private static Map<String, SQLMapper> getConvertedSqlInfo(NodeList nodeList) {
-		Map<String, SQLMapper> sqlMapper = new HashMap<String, SQLMapper>(0);
-		
-		return sqlMapper;
+	private static SQLMapper getConvertedSqlInfo(NodeList nodeList) {
+		return finiteLookupMachine(nodeList);
 	}
 
-	private void finiteLookupMachine(NodeList nodeList) {
-		Map<String, SQLMapper> sqlMapper = null;
+	private static SQLMapper finiteLookupMachine(NodeList nodeList) {
+		SQLMapper mapperInfo = null;
 		for (int count = 0; count < nodeList.getLength(); count++) {
 			Node tempNode = nodeList.item(count);
 			if (tempNode.getNodeType() == Node.ELEMENT_NODE) {
-				SQLMapper mapperInfo = null;
 				if ("sql-info".equals(tempNode.getNodeName())) {
 					mapperInfo.setSqlKey(getNodeAttrsValueByName(tempNode, "query-key"));
-					if (tempNode.hasChildNodes() && tempNode.getChildNodes().getLength() ==3) {
-						
+					if (tempNode.hasChildNodes() && tempNode.getChildNodes().getLength() == 3) {
+
 					}
 				}
 				if ("sql-query".equals(tempNode.getNodeName())) {
@@ -77,9 +72,9 @@ public class DBDataUtils extends ObjectUtils{
 						mapperInfo.setOuputParams(getAllChildNodesKVProps(tempNode.getChildNodes()));
 					}
 				}
-				sqlMapper.put(mapperInfo.getSqlKey(), mapperInfo);
 			}
 		}
+		return mapperInfo;
 	}
 	@SuppressWarnings("rawtypes")
 	private static Collection<KeyValuePair> getAllChildNodesKVProps(NodeList nodeList) {
@@ -110,7 +105,6 @@ public class DBDataUtils extends ObjectUtils{
 		return keyVal;
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private static String getNodeAttrsValueByName(Node tempNode, String attrsName) {
 		String attrValue = null;
 		if (tempNode.getNodeName() != null) {

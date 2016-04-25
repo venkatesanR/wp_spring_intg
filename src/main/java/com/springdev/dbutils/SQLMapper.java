@@ -1,10 +1,11 @@
-package com.commons.utils;
+package com.springdev.dbutils;
 
 import java.util.Collection;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.commons.utils.KeyValuePair;
 import com.springdev.cfc.SqlInterPolator;
 
 @SuppressWarnings("rawtypes")

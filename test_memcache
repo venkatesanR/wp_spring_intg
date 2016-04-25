@@ -1,0 +1,144 @@
+2016-01-19 12:11:48.570 INFO net.spy.memcached.MemcachedConnection: 
+Added {QA sa=/10.10.10.161:11211, #Rops=0, #Wops=0, #iq=0, topRop=null, 
+topWop=null, toWrite=0, interested=0} to connect queue
+2016-01-19 12:11:48.692 INFO net.spy.memcached.MemcachedConnection: 
+Connection state changed for sun.nio.ch.SelectionKeyImpl@5b65afa5
+[/10.10.10.161:11211]
+Connection to server sucessful.
+getLast7Days : 20160113_20160119
+getLastWeek : 20160110_20160116
+getThisWeek : 20160117_20160123
+getLast30Days : 20151221_20160119
+getThisMonth : 20160101_20160131
+getLastMonth : 20151201_20161231
+getThisQuarter : 20160101_20160331
+getLastQuarter : null_null
+Demand type Last Week Data
+java.util.ArrayList
+         serialVersionUID    :    8683452581122892189
+         DEFAULT_CAPACITY    :    10
+         EMPTY_ELEMENTDATA    :    [Ljava.lang.Object;@7a587427
+         elementData    :    [Ljava.lang.Object;@27578fd9
+                 DemandByTypeDataVO [dealTypeId=1, dealTypeName=YuMe, 
+request=12, response=12, impression=0, revenue=0, responseRate=0, 
+fillRate=0, cpm=0, percentofRequest=0]
+                 null
+                 null
+                 null
+                 null
+                 null
+                 null
+                 null
+                 null
+                 null
+         size    :    1
+         MAX_ARRAY_SIZE    :    2147483639
+
+Key not found for DemandByType_Last30Days,Key is : 
+YFP:Report:1_1_6_20151221_20160119_2_11
+
+ >>> YFP:Report:1_1_7_20160101_20160131_2_11 :
+DemandByTypeDataVO
+dealTypeId=1, dealTypeName=YuMe, request=114, response=114, 
+impression=77, revenue=8.85, responseRate=0, fillRate=0, cpm=0, 
+percentofRequest=0]]
+Key not found for DemandByType_LastMonth,Key is : 
+YFP:Report:1_1_8_20151201_20161231_2_11
+
+ >>> YFP:Report:1_1_9_20160101_20160331_2_11 :
+DemandByTypeDataVO
+dealTypeId=1, dealTypeName=YuMe, request=114, response=114, 
+impression=77, revenue=8.85, responseRate=0, fillRate=0, cpm=0, 
+percentofRequest=0]]
+Key not found for DemandByType_LastQuarter,Key is : 
+YFP:Report:1_1_10_null_null_2_11
+
+ >>> YFP:Report:1_2_5_20160110_20160116_2_11_0 :
+TopAdvertiserDataVO
+adUrl=Boobalan Cases Sep 15, adSourceName=YuMe Direct, bid=9, win=9, 
+impression=0, view=0, click=0, revenue=0, winRate=0, impressionRate=0, 
+viewThroughRate=0, cpm=0, clickThroughRate=0], TopAdvertiserDataVO
+adUrl=Shanmugam_bug_14060, adSourceName=YuMe Direct, bid=3, win=3, 
+impression=0, view=0, click=0, revenue=0, winRate=0, impressionRate=0, 
+viewThroughRate=0, cpm=0, clickThroughRate=0]]
+Key not found for ToAdvertiser_Last30Days,Key is : 
+YFP:Report:1_2_6_20151221_20160119_2_11_0
+
+ >>> YFP:Report:1_2_7_20160101_20160131_2_11_0 :
+TopAdvertiserDataVO
+adUrl=Shanmugam_bug_14060, adSourceName=YuMe Direct, bid=34, win=34, 
+impression=25, view=24, click=24, revenue=6.25, winRate=0, 
+impressionRate=0, viewThroughRate=0, cpm=0, clickThroughRate=0], 
+TopAdvertiserDataVO
+adUrl=Boobalan Cases Sep 15, adSourceName=YuMe Direct, bid=70, win=70, 
+impression=43, view=40, click=31, revenue=2.15, winRate=0, 
+impressionRate=0, viewThroughRate=0, cpm=0, clickThroughRate=0], 
+TopAdvertiserDataVO
+adUrl=Viewability V3 Advertiser, adSourceName=YuMe Direct, bid=10, 
+win=10, impression=9, view=9, click=0, revenue=0.45, winRate=0, 
+impressionRate=0, viewThroughRate=0, cpm=0, clickThroughRate=0]]
+Key not found for ToAdvertiser_LastMonth,Key is : 
+YFP:Report:1_2_8_20151201_20161231_2_11_0
+
+ >>> YFP:Report:1_2_9_20160101_20160331_2_11_0 :
+TopAdvertiserDataVO
+adUrl=Boobalan Cases Sep 15, adSourceName=YuMe Direct, bid=70, win=70, 
+impression=43, view=40, click=31, revenue=2.15, winRate=0, 
+impressionRate=0, viewThroughRate=0, cpm=0, clickThroughRate=0], 
+TopAdvertiserDataVO
+adUrl=Shanmugam_bug_14060, adSourceName=YuMe Direct, bid=34, win=34, 
+impression=25, view=24, click=24, revenue=6.25, winRate=0, 
+impressionRate=0, viewThroughRate=0, cpm=0, clickThroughRate=0], 
+TopAdvertiserDataVO
+adUrl=Viewability V3 Advertiser, adSourceName=YuMe Direct, bid=10, 
+win=10, impression=9, view=9, click=0, revenue=0.45, winRate=0, 
+impressionRate=0, viewThroughRate=0, cpm=0, clickThroughRate=0]]
+Key not found for ToAdvertiser_LastQuarter,Key is : 
+YFP:Report:1_2_10_null_null_2_11_0
+Key not found for Performance_Last7days,Key is : 
+YFP:Report:2_1_3_20160113_20160119_2_11
+Key not found for Performance_Last30days,Key is : 
+YFP:Report:2_1_6_20151221_20160119_2_11
+
+ >>> YFP:Report:2_1_7_20160101_20160131_2_11 : PerformanceReportSummaryVO
+currentPeriodRevenue=8.85, previousPeriodRevenue=0, 
+periodBeforePreviousPeriodRevenue=0, currentPeriodRequest=114, 
+previousPeriodRequest=0, periodBeforePreviousPeriodRequest=0, 
+currentPeriodImpression=77, previousPeriodImpression=0, 
+periodBeforePreviousPeriodImpression=0, currentPeriodECpm=0, 
+previousPeriodECpm=0, periodBeforePreviousPeriodECpm=0, 
+previousPeriodECpmTrend=0, periodBeforePreviousPeriodECpmTrend=0]
+Key not found for Performance_VS_Last7days,Key is : 
+YFP:Report:2_2_3_20160113_20160119_2_11
+Key not found for Performance_VS_Last30days,Key is : 
+YFP:Report:2_2_6_20151221_20160119_2_11
+
+ >>> YFP:Report:2_2_7_20160101_20160131_2_11 :
+PerformanceReportDetailVO
+date=Jan 04, 2016, revenue=8.85, request=90, impression=77, fillRate=0, 
+ecpm=0, cpm=0, viewThroughRate=0, clickThroughRate=0, 
+isSummaryRecord=false], PerformanceReportDetailVO
+date=Jan 13, 2016, revenue=0, request=12, impression=0, fillRate=0, 
+ecpm=0, cpm=0, viewThroughRate=0, clickThroughRate=0, 
+isSummaryRecord=false], PerformanceReportDetailVO
+date=Jan 08, 2016, revenue=0, request=8, impression=0, fillRate=0, 
+ecpm=0, cpm=0, viewThroughRate=0, clickThroughRate=0, 
+isSummaryRecord=false], PerformanceReportDetailVO
+date=Jan 05, 2016, revenue=0, request=3, impression=0, fillRate=0, 
+ecpm=0, cpm=0, viewThroughRate=0, clickThroughRate=0, 
+isSummaryRecord=false], PerformanceReportDetailVO
+date=Jan 06, 2016, revenue=0, request=1, impression=0, fillRate=0, 
+ecpm=0, cpm=0, viewThroughRate=0, clickThroughRate=0, 
+isSummaryRecord=false]]
+Key not found for Viewability_Last7days,Key is : 
+YFP:Report:3_1_3_20160113_20160119_2_11
+Key not found for Viewability_Last30days,Key is : 
+YFP:Report:3_1_6_20151221_20160119_2_11
+
+ >>> YFP:Report:3_1_7_20160101_20160131_2_11 :
+ViewabilityReportDetailVO
+timeDimId=201601040000, formatedDate=Jan 04, 2016, impression=77, 
+mesaurableImpression=0, twoSecViewableImpression=0, measurabilityRate=0, 
+twoSecViewabilityRate=0, isSummaryRecord=false]]
+2016-01-19 12:11:55.038 INFO net.spy.memcached.MemcachedClient: Shut 
+down memcached client

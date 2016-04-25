@@ -3,19 +3,9 @@ package com.commons.utils;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class DateUtils {
-	
-	public static void main(String args[]) {
-		String format = "MMM dd,yyyy";
-		System.out.println(addDMYInCalender(-4, Calendar.MONTH, format, new Date()));
-	}
-	
-	public static Date parseDate(String inputDate, String dateFormat) throws Exception {
-		final SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
-		final Date formattedDate = sdf.parse(inputDate);
-		return formattedDate;
-	}
 
 	/**
 	 * This method used to add date/month/year from given date please use
@@ -28,15 +18,30 @@ public class DateUtils {
 	 * @param startDate
 	 * @return
 	 */
-	public static String addDMYInCalender(int toBeAdd, int dMY, String format, Date startDate) {
-		SimpleDateFormat sdf = new SimpleDateFormat(format);
+	public static Object addDMYInCalender(int toBeAdd, int dMY, String format, Date startDate, boolean isFormatReqd) {
 		Calendar cal = Calendar.getInstance();
 		if (startDate != null) {
 			cal.setTime(startDate);
 		} else {
 			cal.setTime(new Date());
 		}
-
+		cal = getComputedDate(cal, dMY, toBeAdd);
+		if (isFormatReqd && format != null && !format.isEmpty()) {
+			return getFormatedDateAsString(cal.getTime(), format);
+		}
+		return cal.getTime();
+	}
+	
+	public static String getFormatedDateAsString(Date date, String format) {
+		String formatedDate = null;
+		if (date != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat(format);
+			formatedDate = sdf.format(date);
+		}
+		return formatedDate;
+	}
+	
+	private static Calendar getComputedDate(Calendar cal, int dMY, int toBeAdd) {
 		if (Calendar.DATE == dMY) {
 			cal.add(Calendar.DATE, toBeAdd);
 		} else if (Calendar.MONTH == dMY) {
@@ -44,6 +49,7 @@ public class DateUtils {
 		} else if (Calendar.YEAR == dMY) {
 			cal.add(Calendar.YEAR, toBeAdd);
 		}
-		return sdf.format(cal.getTime());
+		return cal;
 	}
+
 }

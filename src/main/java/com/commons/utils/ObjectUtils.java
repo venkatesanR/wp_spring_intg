@@ -1,12 +1,14 @@
 package com.commons.utils;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
 import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -102,6 +104,29 @@ public class ObjectUtils {
 	public static String printArrayToString() {
 		//Collections.sort(list);
 		return null;
+	}
+
+
+	public static Properties getPropFromString(String props) {
+		final Properties p = new Properties();
+		try {
+			p.load(new StringReader(props));
+		} catch (IOException ex) {
+			logger.error(ex.getMessage());
+		}
+		return p;
+	}
+
+	public static Properties getPropFromString(String[] props) {
+		final Properties p = new Properties();
+		try {
+			for (String data : props) {
+				p.load(new StringReader(data));
+			}
+		} catch (IOException ex) {
+			logger.error(ex.getMessage());
+		}
+		return p;
 	}
 }
 

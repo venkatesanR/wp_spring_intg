@@ -2,6 +2,6 @@ package com.springdev.ldap;
 
 public interface LDAPConstants {
 	interface CONFEDENTIALS {
-		String PASSWORD="saranya1729$";
+		String PASSWORD="acube1729$";
 	}
 }

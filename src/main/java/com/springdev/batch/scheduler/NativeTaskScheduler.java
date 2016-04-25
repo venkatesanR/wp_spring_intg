@@ -12,6 +12,8 @@ import org.springframework.batch.core.repository.JobExecutionAlreadyRunningExcep
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
 
+import com.commons.utils.SystemUtils;
+
 public class NativeTaskScheduler {
 	private static final Logger logger = Logger.getLogger(NativeTaskScheduler.class);
 	private JobLauncher launcher;
@@ -25,18 +27,23 @@ public class NativeTaskScheduler {
 	}
 
 	public void setRun(boolean run) {
-		this.run = false;
+		this.run = run;
+	}
+
+	public boolean isFroceShutDown() {
+		String batch_Flag = SystemUtils.getDynaEnvVariables("DISABLE_BATCH_JOB");
+		return false;
 	}
 
 	public void run() {
 		try {
-			if (run && jobList != null && !jobList.isEmpty()) {
+			if (run && jobList != null && !jobList.isEmpty() && !isFroceShutDown()) {
 				for (Job job : jobList) {
 					execution = launcher.run(job, new JobParameters());
 				}
 				logger.info("Execution Completed");
 			}
-			
+
 		} catch (JobExecutionAlreadyRunningException e) {
 			logger.debug(e);
 		} catch (JobRestartException e) {

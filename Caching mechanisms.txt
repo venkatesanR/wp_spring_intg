@@ -40,8 +40,6 @@ MemCache(Open Source)
 	Objectify for data store(_3rd Party)
 	Missing rate is too high since memory is LT 32MB
 
-
-
 Spring caching mechanisms:
 -------------------------
 https://youtu.be/3NLS7147UQo

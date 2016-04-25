@@ -11,9 +11,9 @@ public class MemCacheClientTest extends LocalStorageOfObject {
 	private static final Integer TTL = 10000;
 	private static String inetAdrs = "172.18.8.143";
 	private static String inetAdrs2 = "10.10.10.161";
-	private static String remoteCacheKeys = "3_1_6_20151201_20161230_6_271," + "3_1_7_20151201_20161231_6_271,"
-			+ "2_1_6_20151201_20161230_6_271," + "2_2_6_20151201_20161230_6_271," + "1_1_6_20151201_20161230_6_271,"
-			+ "1_2_6_20151201_20161230_6_271_0";
+	private static String remoteCacheKeys = "3_1_6__20151101_20151130_6_102," + "3_1_7__20151101_20151130_6_102,"
+			+ "2_1_6__20151101_20151130_6_102," + "2_2_6__20151101_20151130_6_102," + "1_1_6__20151101_20151130_6_102,"
+			+ "1_2_6__20151101_20151130_6_271_0";
 	private static final String keyafix = "95_225";
 	private static final String datRangId = "20151201_20151231";
 	//YFP:Report:3_1233
@@ -25,9 +25,10 @@ public class MemCacheClientTest extends LocalStorageOfObject {
 		try {
 			local = new MemcachedClient(new InetSocketAddress(inetAdrs, 11211));
 			remote = new MemcachedClient(new InetSocketAddress(inetAdrs2, 11211));
-			loadInLocal(local, remote.get("YFP:Report:1_1_7_20160101_20160131_2_11"),
-					"YFP:Report:1_1_6_20151221_20160120_95_305");
-			printBeanProperites(local.get("YFP:Report:1_1_6_20151221_20160120_95_305"));
+			//loadInLocal(local, remote.get("YFP:Report:1_1_7_20160101_20160131_2_11"),
+					//"YFP:Report:1_1_6_20151221_20160120_95_305");
+			//printBeanProperites(local.get("YFP:Report:1_1_6_20151221_20160120_95_305"));
+					printLocalCachedData(local);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

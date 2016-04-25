@@ -32,7 +32,6 @@ public class StackUtils<T> {
 	private static final Logger logger = Logger.getLogger(StackUtils.class);
 	private T[] stack_frame = null;
 	private int stack_current_index = -1;
-	private final int DEFAULT_FRAME_SIZE = 10;
 	private Float loitering_factor = null;
 
 	public StackUtils(double loadFactor) {
@@ -61,7 +60,7 @@ public class StackUtils<T> {
 	}
 
 	private void dynamicAllocation() {
-		stack_frame = MathUtil.loitering(stack_frame, isEmpty(), DEFAULT_FRAME_SIZE, stack_current_index,
+		stack_frame = MathUtil.loitering(stack_frame, isEmpty(), stack_current_index,
 				loitering_factor);
 	}
 
